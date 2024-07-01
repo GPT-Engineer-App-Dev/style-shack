@@ -14,6 +14,7 @@ const Products = () => {
 
   const addItem = useAddShoppingCartItem();
   const { session } = useSupabaseAuth();
+  console.log('Session in Products component:', session);
 
   const handleAddToCart = async (productId) => {
     if (!session || !session.user) {

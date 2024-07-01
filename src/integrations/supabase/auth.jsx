@@ -28,12 +28,14 @@ export const SupabaseAuthProviderInner = ({ children }) => {
       if (error) {
         console.error('Error fetching session:', error);
       } else {
+        console.log('Session fetched:', session);
         setSession(session);
       }
       setLoading(false);
     };
 
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log('Auth state changed:', event, session);
       if (session) {
         setSession(session);
       } else {
