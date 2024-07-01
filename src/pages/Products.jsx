@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useProducts } from "@/integrations/supabase/index.js";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -54,6 +55,9 @@ const Products = () => {
               <CardTitle>{product.name}</CardTitle>
             </CardHeader>
             <CardContent>
+              <AspectRatio ratio={4 / 3}>
+                <img src={product.image_url} alt={product.name} className="object-cover w-full h-full rounded-md" />
+              </AspectRatio>
               <p>{product.price}</p>
             </CardContent>
             <CardFooter>
