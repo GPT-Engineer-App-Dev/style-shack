@@ -16,7 +16,7 @@ const Products = () => {
   const { session } = useSupabaseAuth();
 
   const handleAddToCart = async (productId) => {
-    if (!session) {
+    if (!session || !session.user) {
       toast.error("You need to be logged in to add items to the cart.");
       return;
     }

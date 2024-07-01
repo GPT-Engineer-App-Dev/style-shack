@@ -25,12 +25,18 @@ export const SupabaseAuthProviderInner = ({ children }) => {
     const getSession = async () => {
       setLoading(true);
       const { data: { session } } = await supabase.auth.getSession();
-      setSession(session);
+      if (session) {
+        setSession(session);
+      }
       setLoading(false);
     };
 
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
-      setSession(session);
+      if (session) {
+        setSession(session);
+      } else {
+        setSession(null);
+      }
       queryClient.invalidateQueries('user');
     });
 
