@@ -87,9 +87,10 @@ export const useDeleteProduct = () => {
 
 // Hooks for shopping_cart
 
-export const useShoppingCart = () => useQuery({
-    queryKey: ['shopping_cart'],
-    queryFn: () => fromSupabase(supabase.from('shopping_cart').select('*')),
+export const useShoppingCart = (userId) => useQuery({
+    queryKey: ['shopping_cart', userId],
+    queryFn: () => fromSupabase(supabase.from('shopping_cart').select('*').eq('user_id', userId)),
+    enabled: !!userId,
 });
 
 export const useShoppingCartItem = (id) => useQuery({

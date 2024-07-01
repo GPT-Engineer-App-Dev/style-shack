@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useProducts, useAddShoppingCartItem } from "@/integrations/supabase/index.js";
+import { useSupabaseAuth } from "@/integrations/supabase/auth.jsx";
 import { toast } from "sonner";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -12,10 +13,16 @@ const Products = () => {
   const { data: products, error, isLoading } = useProducts();
 
   const addItem = useAddShoppingCartItem();
+  const { session } = useSupabaseAuth();
 
   const handleAddToCart = async (productId) => {
+    if (!session) {
+      toast.error("You need to be logged in to add items to the cart.");
+      return;
+    }
+
     try {
-      await addItem.mutateAsync({ product_id: productId, quantity: 1 });
+      await addItem.mutateAsync({ product_id: productId, quantity: 1, user_id: session.user.id });
       toast.success("Item added to cart!");
     } catch (error) {
       toast.error("Failed to add item to cart.");
