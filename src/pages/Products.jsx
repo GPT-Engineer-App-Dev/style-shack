@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useProducts, useAddShoppingCartItem } from "@/integrations/supabase/index.js";
-import { useSupabaseAuth } from "@/integrations/supabase/auth.jsx";
+import { useSupabaseAuth } from "@/integrations/supabase/auth";
 import { toast } from "sonner";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -17,7 +17,7 @@ const Products = () => {
   console.log('Session in Products component:', session);
 
   const handleAddToCart = async (productId) => {
-    if (!session || !session.user) {
+    if (!session || !session.user || !session.user.id) {
       toast.error("You need to be logged in to add items to the cart.");
       return;
     }
