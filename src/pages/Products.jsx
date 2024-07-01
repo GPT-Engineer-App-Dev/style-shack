@@ -3,12 +3,24 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { useProducts } from "@/integrations/supabase/index.js";
+import { useProducts, useAddShoppingCartItem } from "@/integrations/supabase/index.js";
+import { toast } from "sonner";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const Products = () => {
   const { data: products, error, isLoading } = useProducts();
+
+  const addItem = useAddShoppingCartItem();
+
+  const handleAddToCart = async (productId) => {
+    try {
+      await addItem.mutateAsync({ product_id: productId, quantity: 1 });
+      toast.success("Item added to cart!");
+    } catch (error) {
+      toast.error("Failed to add item to cart.");
+    }
+  };
 
   if (isLoading) {
     return (
@@ -61,7 +73,7 @@ const Products = () => {
               <p>{product.price}</p>
             </CardContent>
             <CardFooter>
-              <Button variant="default" className="text-black bg-white">Add to Cart</Button>
+              <Button variant="default" className="text-black bg-white" onClick={() => handleAddToCart(product.id)}>Add to Cart</Button>
             </CardFooter>
           </Card>
         ))}
