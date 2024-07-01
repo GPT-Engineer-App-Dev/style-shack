@@ -16,6 +16,7 @@ const Cart = () => {
       await deleteItem.mutateAsync(id);
       toast.success("Item removed successfully!");
     } catch (error) {
+      console.error("Failed to remove item:", error);
       toast.error("Failed to remove item.");
     }
   };
@@ -25,6 +26,7 @@ const Cart = () => {
       await updateItem.mutateAsync({ id, quantity });
       toast.success("Quantity updated successfully!");
     } catch (error) {
+      console.error("Failed to update quantity:", error);
       toast.error("Failed to update quantity.");
     }
   };

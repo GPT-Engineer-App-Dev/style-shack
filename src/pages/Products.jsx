@@ -25,6 +25,7 @@ const Products = () => {
       await addItem.mutateAsync({ product_id: productId, quantity: 1, user_id: session.user.id });
       toast.success("Item added to cart!");
     } catch (error) {
+      console.error("Failed to add item to cart:", error);
       toast.error("Failed to add item to cart.");
     }
   };
