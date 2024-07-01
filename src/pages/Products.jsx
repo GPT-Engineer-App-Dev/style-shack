@@ -61,14 +61,14 @@ const Products = () => {
               <p>{product.price}</p>
             </CardContent>
             <CardFooter>
-              <Button variant="outline">Add to Cart</Button>
+              <Button variant="default" className="text-black bg-white">Add to Cart</Button>
             </CardFooter>
           </Card>
         ))}
       </div>
       <div className="mt-4">
         <Link to="/cart">
-          <Button variant="outline">Go to Cart</Button>
+          <Button variant="default" className="text-black bg-white">Go to Cart</Button>
         </Link>
       </div>
     </div>

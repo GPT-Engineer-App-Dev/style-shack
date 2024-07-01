@@ -24,14 +24,14 @@ const Cart = () => {
               <p>Quantity: {item.quantity}</p>
             </CardContent>
             <CardFooter>
-              <Button variant="outline">Remove</Button>
+              <Button variant="default" className="text-black bg-white">Remove</Button>
             </CardFooter>
           </Card>
         ))}
       </div>
       <div className="mt-4">
         <h2 className="text-2xl font-bold">Total: ${total}</h2>
-        <Button variant="outline" className="mt-2">Checkout</Button>
+        <Button variant="default" className="text-black bg-white mt-2">Checkout</Button>
       </div>
     </div>
   );

@@ -8,16 +8,16 @@ const Navbar = () => {
       <div className="text-lg font-bold">Clothing Store</div>
       <div className="space-x-4">
         <Link to="/">
-          <Button variant="outline" className="text-white">Home</Button>
+          <Button variant="default" className="text-black bg-white">Home</Button>
         </Link>
         <Link to="/products">
-          <Button variant="outline" className="text-white">Products</Button>
+          <Button variant="default" className="text-black bg-white">Products</Button>
         </Link>
         <Link to="/cart">
-          <Button variant="outline" className="text-white">Cart</Button>
+          <Button variant="default" className="text-black bg-white">Cart</Button>
         </Link>
         <Link to="/admin">
-          <Button variant="outline" className="text-white">Admin</Button>
+          <Button variant="default" className="text-black bg-white">Admin</Button>
         </Link>
       </div>
     </nav>

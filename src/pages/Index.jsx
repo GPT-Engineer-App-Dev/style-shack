@@ -9,10 +9,10 @@ const Index = () => {
       <p className="text-lg">Find the best clothes for every occasion.</p>
       <div className="space-x-4">
         <Link to="/products">
-          <Button variant="outline">Shop Now</Button>
+          <Button variant="default" className="text-black bg-white">Shop Now</Button>
         </Link>
         <Link to="/cart">
-          <Button variant="outline">View Cart</Button>
+          <Button variant="default" className="text-black bg-white">View Cart</Button>
         </Link>
       </div>
     </div>

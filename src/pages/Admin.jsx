@@ -52,7 +52,7 @@ const Admin = () => {
               <Label htmlFor="imageUrl">Image URL</Label>
               <Input id="imageUrl" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} required />
             </div>
-            <Button type="submit" variant="outline">Add Product</Button>
+            <Button type="submit" variant="default" className="text-black bg-white">Add Product</Button>
           </form>
         </CardContent>
       </Card>
