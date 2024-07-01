@@ -16,6 +16,9 @@ const Navbar = () => {
         <Link to="/cart">
           <Button variant="outline" className="text-white">Cart</Button>
         </Link>
+        <Link to="/admin">
+          <Button variant="outline" className="text-white">Admin</Button>
+        </Link>
       </div>
     </nav>
   );
